@@ -2,7 +2,6 @@ package Controllers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -35,8 +34,8 @@ public class CreateSession extends HttpServlet {
 		//khởi tạo session
 		HttpSession s = req.getSession();
 		//Gán dữ liệu vào session
-		s.setAttribute("ten", "Nguyễn Hữu Trung");
-		s.setAttribute("tuoi", new Integer(40));
+		s.setAttribute("ten", "Pham Thi Tuyet Minh");
+		s.setAttribute("tuoi", 20);
 		//thiết lập thời gian tồn tại session
 		s.setMaxInactiveInterval(30);
 		//hiển thị thông báo lên web

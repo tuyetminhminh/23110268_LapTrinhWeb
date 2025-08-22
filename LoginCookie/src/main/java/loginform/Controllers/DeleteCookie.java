@@ -36,7 +36,7 @@ public class DeleteCookie extends HttpServlet {
 		// Get an array of Cookies associated with this domain
 		cookies = request.getCookies();
 		// Set response content type
-		response.setContentType("text/html");
+		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		if (cookies != null) {
 			out.println("<h2> Cookies Name and Value</h2>");

@@ -3,7 +3,6 @@ package Controllers;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,7 +13,7 @@ import java.io.PrintWriter;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,8 +33,11 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 
 		PrintWriter out = response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+
 		
-		if (username.equals("trungnh") && password.equals("123")) {
+		if (username.equals("tuyetminh") && password.equals("123")) {
 			out.print("Chào mừng bạn, " + username);
 			HttpSession session = request.getSession();
 			session.setAttribute("name", username);

@@ -28,25 +28,33 @@ public class HelloServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/html");
-		PrintWriter printWriter = resp.getWriter();
-		String name = "";
-		// Nhận cookie
-		Cookie[] cookie = req.getCookies();
-		for (Cookie c : cookie) {
-			if (c.getName().equals("username")) {
-				name = c.getValue();
-			}
-		}
-		if (name.equals("")) {
-			// chuyển sang trang LoginServlet
-			resp.sendRedirect("/HelloServlet/login");
-		}
-		// hiển thị lên trang bằng đối tượng PrintWriter()
-		printWriter.println("Xin chao " + name);
+	    resp.setContentType("text/html;charset=UTF-8");
+	    PrintWriter out = resp.getWriter();
+
+	    String name = "";
+	    Cookie[] cookies = req.getCookies();
+	    if (cookies != null) {
+	        for (Cookie c : cookies) {
+	            if ("username".equals(c.getName())) {
+	                name = c.getValue();
+	                break;
+	            }
+	        }
+	    }
+
+	    if (name.equals("")) {
+	        // Nếu chưa đăng nhập thì quay lại login.html
+	        resp.sendRedirect(req.getContextPath() + "/login.html");
+	        return;
+	    }
+
+	    // Nếu đã đăng nhập thì hiển thị lời chào
+	    out.println("<h2>Xin chào " + name + "</h2>");
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
