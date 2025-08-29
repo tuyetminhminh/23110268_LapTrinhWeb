@@ -1,7 +1,6 @@
 package ltw.models;
 
 import java.io.Serializable;
-import java.security.Timestamp;
 import java.sql.Date;
 
 @SuppressWarnings("serial")
@@ -16,10 +15,6 @@ public class User implements Serializable {
 	private int roleid;
 	private String phone;
 	private Date createdDate;
-	// OTP Mail
-	private String otp;
-	private Timestamp otpExpired;
-
 	
 	public User() {
     }
@@ -121,6 +116,4 @@ public class User implements Serializable {
 				+ ", passWord=" + passWord + ", avatar=" + avatar + ", roleid=" + roleid + ", phone=" + phone
 				+ ", createdDate=" + createdDate + "]";
 	}
-
-
 }

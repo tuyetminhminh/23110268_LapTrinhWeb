@@ -1,41 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Đăng ký</title>
+  <link rel="stylesheet" href="<c:url value='/css/app.css'/>">
 </head>
 <body>
-    <div class="container">
-        <h2>Register</h2>
-        <% if (request.getAttribute("alert") != null) { %>
-            <div class="alert alert-danger"><%= request.getAttribute("alert") %></div>
-        <% } %>
-        <form action="<%= request.getContextPath() %>/register" method="post">
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="mb-3">
-                <label for="fullname" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="fullname" name="fullname" required>
-            </div>
-            <div class="mb-3">
-                <label for="phone" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone">
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-            <a href="<%= request.getContextPath() %>/login">Login</a>
-        </form>
+  <div class="container">
+    <div class="card" style="max-width:640px;margin:40px auto">
+      <h2 class="title">Tạo tài khoản</h2>
+
+      <c:if test="${not empty alert}">
+        <p style="color:#dc2626">${alert}</p>
+      </c:if>
+
+      <form action="<c:url value='/register'/>" method="post" class="grid">
+        <div>
+          <label>Tài khoản</label>
+          <input class="input" type="text" name="username" required>
+        </div>
+        <div>
+          <label>Mật khẩu</label>
+          <input class="input" type="password" name="password" required>
+        </div>
+        <div class="grid grid-2">
+          <div>
+            <label>Họ tên</label>
+            <input class="input" type="text" name="fullname">
+          </div>
+          <div>
+            <label>Điện thoại</label>
+            <input class="input" type="text" name="phone">
+          </div>
+        </div>
+        <div>
+          <label>Email</label>
+          <input class="input" type="email" name="email" required>
+        </div>
+        <div>
+          <button class="btn" type="submit">Đăng ký</button>
+          <a class="btn-ghost" href="<c:url value='/login'/>">Đã có tài khoản?</a>
+        </div>
+      </form>
     </div>
+  </div>
 </body>
 </html>

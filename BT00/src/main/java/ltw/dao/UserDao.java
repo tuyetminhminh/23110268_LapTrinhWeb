@@ -1,13 +1,15 @@
 package ltw.dao;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import ltw.models.User;
 
 public interface UserDao {
 
 	User findByUserName(String username);
-
+	List<User> findAll();
+	User findById(int id);
 	void insert(User user);
 
 	boolean checkExistEmail(String email);

@@ -1,0 +1,68 @@
+@charset "UTF-8";
+:root{
+  --green:#22c55e;        /* primary */
+  --green-dark:#16a34a;
+  --green-700:#15803d;
+  --text:#1f2937;         /* slate-800 */
+  --muted:#6b7280;        /* slate-500 */
+  --bg:#f8fafc;           /* slate-50 */
+  --card:#ffffff;
+  --border:#e5e7eb;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  color:var(--text); background:var(--bg);
+}
+
+.container{max-width:1024px;margin:0 auto;padding:24px}
+
+.navbar{
+  background:var(--card); border-bottom:1px solid var(--border);
+}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 24px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--green-700)}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--green)}
+
+.nav-links a{
+  color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:8px;
+}
+.nav-links a.active, .nav-links a:hover{color:#fff;background:var(--green)}
+
+.btn{
+  display:inline-block; background:var(--green); color:#fff; text-decoration:none;
+  padding:10px 14px; border-radius:10px; border:0; cursor:pointer; font-weight:600
+}
+.btn:hover{background:var(--green-dark)}
+
+.btn-ghost{background:transparent;color:var(--green);border:1px solid var(--green)}
+.btn-ghost:hover{background:#ecfdf5}
+
+.card{
+  background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px;
+  box-shadow:0 2px 8px rgb(15 23 42 / .04);
+}
+
+.grid{display:grid; gap:16px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+.input, select{
+  width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px;
+  outline:none; background:#fff;
+}
+.input:focus{border-color:var(--green)}
+
+.table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border:1px solid var(--border); border-radius:12px;}
+.table th,.table td{padding:12px 14px; border-bottom:1px solid var(--border); text-align:left}
+.table th{background:#f0fdf4; color:var(--green-700)}
+.table tr:hover td{background:#fafafa}
+
+.kicker{color:var(--muted);font-size:14px}
+.title{margin:0 0 8px 0}
+.subtle{color:var(--muted);font-size:13px}
+
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;background:#ecfdf5;color:var(--green-700);border:1px solid #bbf7d0}

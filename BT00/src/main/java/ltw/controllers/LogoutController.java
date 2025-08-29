@@ -12,7 +12,10 @@ import ltw.util.Constant;
 
 @WebServlet("/logout")
 public class LogoutController extends HttpServlet {
-    @Override
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Cookie cookie = new Cookie(Constant.COOKIE_REMEMBER, "");

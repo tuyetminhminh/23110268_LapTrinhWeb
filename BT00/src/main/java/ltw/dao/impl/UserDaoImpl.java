@@ -1,6 +1,8 @@
 package ltw.dao.impl;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -141,5 +143,54 @@ public class UserDaoImpl implements UserDao {
         }
 		
 	}
+	@Override
+	public List<User> findAll() {
+	  String sql = "SELECT id, username, email, fullname, phone, roleid, avatar, createDate FROM [User] ORDER BY id DESC";
+	  List<User> list = new ArrayList<>();
+	  try (Connection con = new DBConnection().getConnection();
+	       PreparedStatement ps = con.prepareStatement(sql);
+	       ResultSet rs = ps.executeQuery()) {
+	    while (rs.next()) {
+	      User u = new User();
+	      u.setId(rs.getInt("id"));
+	      u.setUserName(rs.getString("username"));
+	      u.setEmail(rs.getString("email"));
+	      u.setFullName(rs.getString("fullname"));
+	      u.setPhone(rs.getString("phone"));
+	      u.setRoleid(rs.getInt("roleid"));
+	      u.setAvatar(rs.getString("avatar"));
+	      u.setCreatedDate(rs.getDate("createDate"));
+	      list.add(u);
+	    }
+	  } catch (Exception e) { e.printStackTrace(); }
+	  return list;
+	}
+
+	@Override
+	public User findById(int id) {
+		String sql = "SELECT * FROM [User] WHERE id = ?";
+	    try (Connection con = new DBConnection().getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+	        ps.setInt(1, id);
+	        try (ResultSet rs = ps.executeQuery()) {
+	            if (rs.next()) {
+	                User u = new User();
+	                u.setId(rs.getInt("id"));
+	                u.setUserName(rs.getString("username"));
+	                u.setPassWord(rs.getString("password"));
+	                u.setEmail(rs.getString("email"));
+	                u.setFullName(rs.getString("fullname"));
+	                u.setPhone(rs.getString("phone"));
+	                u.setRoleid(rs.getInt("roleid"));
+	                u.setAvatar(rs.getString("avatar"));
+	                u.setCreatedDate(rs.getDate("createDate"));
+	                return u;
+	            }
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+		return null;
+	}
+
 
 }

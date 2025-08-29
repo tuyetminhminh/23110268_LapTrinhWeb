@@ -11,8 +11,6 @@ public class DBConnection {
 	private final String dbName = "LapTrinhWeb";
 	private final String portNumber = "1433";
 	private final String instance = "";
-	private final String userID = "";
-	private final String password = "";
 
 	public Connection getConnection() throws Exception {
 		String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName
@@ -34,18 +32,6 @@ public class DBConnection {
 
 			Statement stmt = conn.createStatement();
 
-//			long millis = System.currentTimeMillis();
-//            Date date = new Date(millis);
-//            stmt.executeUpdate("INSERT INTO [User](username, password, email, fullname, phone, roleid, createDate, avatar) " 
-//                + "VALUES ('user1', '123', 'user1@example.com', 'User One', '0123456789', 5, '" + date + "', NULL)");
-//            
-//            // Sửa: Select đầy đủ cột để test (để so sánh username/password)
-//            ResultSet rs = stmt.executeQuery("SELECT * FROM [User]");
-//            while (rs.next()) {
-//                System.out.println("ID: " + rs.getInt("id") + ", Username: " + rs.getString("username") + ", Password: " + rs.getString("password") 
-//                    + ", Email: " + rs.getString("email") + ", Fullname: " + rs.getString("fullname") + ", Phone: " + rs.getString("phone")
-//                    + ", RoleID: " + rs.getInt("roleid") + ", CreateDate: " + rs.getDate("createDate") + ", Avatar: " + rs.getString("avatar"));
-//            }
 			long millis = System.currentTimeMillis();
 	        Date date = new Date(millis);
 	        String plainPassword = "123";  // Password gốc
