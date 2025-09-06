@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    
+    <persistence-unit name="dataSource" transaction-type="RESOURCE_LOCAL">
+        <!-- Chỉ định provider là Hibernate -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        
+        <!-- Các entity classes -->
+        <class>jpa.entity.User</class>
+        <class>jpa.entity.Category</class>
+        
+        <properties>
+            <!-- Kết nối SQL Server với Windows Authentication -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:sqlserver://LAPTOP-DEJAVU;databaseName=BTHS04;integratedSecurity=true;encrypt=true;trustServerCertificate=true;"/>
+            
+            <!-- Hibernate properties -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="hibernate.show_sql" value="true"/> <!-- Hiển thị SQL để debug -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- Tự động tạo/cập nhật bảng -->
+        </properties>
+    </persistence-unit>
+</persistence>
