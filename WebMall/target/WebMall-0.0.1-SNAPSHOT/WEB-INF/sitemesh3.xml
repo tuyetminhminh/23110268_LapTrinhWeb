@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+  <!-- Layout mặc định -->
+  <mapping path="/*" decorator="/WEB-INF/decorators/main.jsp"/>
+
+  <!-- Khu admin -->
+  <mapping path="/admin/*" decorator="/WEB-INF/decorators/admin.jsp"/>
+
+  <!-- Bỏ qua decorate cho API/tài nguyên tĩnh -->
+  <mapping path="/api*" exclude="true"/>
+  <mapping path="/assets/*" exclude="true"/>
+  <mapping path="/uploads/*" exclude="true"/>
+</sitemesh>
